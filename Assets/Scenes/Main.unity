@@ -535,6 +535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingPosition: {fileID: 1871918431}
   bulletObject: {fileID: 3808564469255064819, guid: 4f189ef3d32a604409b39bd42baf9b52, type: 3}
+  shootDelay: 0.2
 --- !u!50 &796042391
 Rigidbody2D:
   serializedVersion: 4
@@ -1218,6 +1219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingPosition: {fileID: 138209997}
   bulletObject: {fileID: 3808564469255064819, guid: 4f189ef3d32a604409b39bd42baf9b52, type: 3}
+  shootDelay: 0.2
 --- !u!114 &1307246131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1231,6 +1233,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decisionTime: 0.2
+  currentAIType: 0
+  currentState: 1
 --- !u!58 &1307246132
 CircleCollider2D:
   m_ObjectHideFlags: 0

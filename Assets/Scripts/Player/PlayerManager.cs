@@ -27,16 +27,20 @@ public class PlayerManager : MonoBehaviour
         //Get Inputs
 
         #region Movement
+        if (moveManager != null)
+        {
+            float dir = Input.GetAxisRaw("Horizontal");
+            moveManager.MoveCharacter((int)dir);    //Move the player
 
-        float dir = Input.GetAxisRaw("Horizontal");
-        moveManager.MoveCharacter((int)dir);    //Move the player
-
+        }
         #endregion
 
         #region Shooting
-
-        if (Input.GetKeyDown(KeyCode.Space))
-            shootManager.ShootBullet(1,true);
+        if (shootManager != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+                shootManager.ShootBullet(1, true);
+        }
 
         #endregion
     }
