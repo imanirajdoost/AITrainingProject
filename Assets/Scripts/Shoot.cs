@@ -20,17 +20,13 @@ public class Shoot : MonoBehaviour
     /// <summary>
     /// Sends the shoot command for the bullet in the given direction
     /// </summary>
-    /// <param name="direction"></param>
-    public void ShootBullet(float direction)
+    /// <param name="direction">Direction of the bullet</param>
+    /// <param name="isPlayer">Was this the player who shot the bullet?</param>
+    public void ShootBullet(float direction,bool isPlayer)
     {
         GameObject bulletRef = Instantiate(bulletObject, shootingPosition.position,Quaternion.identity);
         BulletManager bulletManager = bulletRef.GetComponent<BulletManager>();
-        bulletManager.ShootBullet(direction);
-    }
-
-    private void OnEnable()
-    {
-        Destroy(this, 3);   //Destroy this object after x seconds
+        bulletManager.ShootBullet(direction,isPlayer);
     }
 
     #endregion

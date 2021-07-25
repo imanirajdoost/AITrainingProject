@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class AIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    #region Private Variables
+
+    private Move moveManager;
+    private Shoot shootManager;
+
+    [Range(0.01f,1f)]
+    public float decisionTime = 0.2f;
+    #endregion
+
+    #region Methods
+
+    private void Awake()
+    {
+        //Cache Componenets in the begining
+        moveManager = GetComponent<Move>();
+        shootManager = GetComponent<Shoot>();
+    }
+
+    private void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #endregion
 }

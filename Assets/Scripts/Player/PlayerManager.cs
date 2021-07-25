@@ -36,7 +36,7 @@ public class PlayerManager : MonoBehaviour
         #region Shooting
 
         if (Input.GetKeyDown(KeyCode.Space))
-            shootManager.ShootBullet(1);
+            shootManager.ShootBullet(1,true);
 
         #endregion
     }
