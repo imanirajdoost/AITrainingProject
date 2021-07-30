@@ -19,9 +19,22 @@ public class Shoot : MonoBehaviour
     #region Private Variables
     private bool canShoot = true;
     private Coroutine shootDelayCoroutine;
+    private float bulletRadius;
+    private CircleCollider2D col;
     #endregion
 
     #region Methods
+
+    private void Awake()
+    {
+        col = GetComponent<CircleCollider2D>();
+        bulletRadius = col.radius;
+    }
+
+    public float GetBulletRadius()
+    {
+        return bulletRadius;
+    }
 
     /// <summary>
     /// Sends the shoot command for the bullet in the given direction

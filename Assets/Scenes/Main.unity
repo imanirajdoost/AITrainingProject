@@ -535,7 +535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingPosition: {fileID: 1871918431}
   bulletObject: {fileID: 3808564469255064819, guid: 4f189ef3d32a604409b39bd42baf9b52, type: 3}
-  shootDelay: 0.2
+  shootDelay: 0.4
 --- !u!50 &796042391
 Rigidbody2D:
   serializedVersion: 4
@@ -1163,7 +1163,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307246126}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: 1.271, z: 0}
+  m_LocalPosition: {x: 0, y: 1.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 242377101}
@@ -1219,7 +1219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingPosition: {fileID: 138209997}
   bulletObject: {fileID: 3808564469255064819, guid: 4f189ef3d32a604409b39bd42baf9b52, type: 3}
-  shootDelay: 0.2
+  shootDelay: 0.4
 --- !u!114 &1307246131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1232,9 +1232,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310f91d0a050f8d4f8199e4fff3c1052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decisionTime: 0.2
-  currentAIType: 0
+  decisionTime: 0.01
+  currentAIType: 1
   currentState: 1
+  playerOffset: 0.05
+  whatToDetect:
+    serializedVersion: 2
+    m_Bits: 512
+  xLimit: 0.85
+  maxNumberOfLoops: 15
+  pointPrefab: {fileID: 1965184142082856525, guid: 99c6c03c8030f5c4798766d735f7fa0c, type: 3}
 --- !u!58 &1307246132
 CircleCollider2D:
   m_ObjectHideFlags: 0

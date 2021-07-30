@@ -74,6 +74,11 @@ public class BulletManager : MonoBehaviour
         }
     }
 
+    public bool IsPlayersBullet()
+    {
+        return m_isPlayer;
+    }
+
     #endregion
 
 }
