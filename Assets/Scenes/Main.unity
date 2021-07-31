@@ -1232,8 +1232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310f91d0a050f8d4f8199e4fff3c1052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decisionTime: 0.01
-  currentAIType: 1
+  decisionTime: 0.2
+  currentAIType: 2
   currentState: 1
   playerOffset: 0.05
   whatToDetect:

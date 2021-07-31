@@ -239,7 +239,11 @@ public class AIManager : MonoBehaviour
 
     private void RunSmart()
     {
-
+        float chance = UnityEngine.Random.Range(0f, 1f);
+        if (chance >= 0.6f)
+            RunRandom();
+        else
+            RunGreedy();
     }
 
     #endregion
