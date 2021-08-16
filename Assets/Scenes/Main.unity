@@ -1233,14 +1233,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decisionTime: 0.2
-  currentAIType: 2
+  currentAIType: 3
   currentState: 1
   playerOffset: 0.05
   whatToDetect:
     serializedVersion: 2
     m_Bits: 512
   xLimit: 0.85
-  maxNumberOfLoops: 15
   pointPrefab: {fileID: 1965184142082856525, guid: 99c6c03c8030f5c4798766d735f7fa0c, type: 3}
 --- !u!58 &1307246132
 CircleCollider2D:

@@ -22,16 +22,15 @@ public class AIManager : MonoBehaviour
     public float playerOffset = 0.05f;
     public LayerMask whatToDetect;
     public float xLimit = 0.85f;
-    public int maxNumberOfLoops = 15;
-    private bool isMoving = false;
+    //public int maxNumberOfLoops = 15;
     public GameObject pointPrefab;
     private CircleCollider2D nextSafePosition;
     private List<CircleCollider2D> safePositions;
     #endregion
 
     #region Enums
-    public enum AIType { Random, Greedy, Smart }
-    public enum States { MoveRight, MoveLeft, Shoot,GoToSafety }
+    public enum AIType { DoNothing,Random, Greedy, Smart }
+    public enum States { MoveRight, MoveLeft, Shoot, GoToSafety }
     #endregion
 
     #region Methods
@@ -69,6 +68,9 @@ public class AIManager : MonoBehaviour
         //Run the AI decision maker accordingly
         switch (currentAIType)
         {
+            case AIType.DoNothing:
+                InvokeRepeating("RunDoNothing", 0, decisionTime);
+                break;
             case AIType.Random:
                 InvokeRepeating("RunRandom",0,decisionTime);
                 break;
@@ -163,15 +165,6 @@ public class AIManager : MonoBehaviour
         return nextSafePosition.transform.position;
     }
 
-    private void OnDrawGizmos()
-    {
-        if (availablePoints != null && availablePoints.Count > 0)
-        {
-            for (int i = 0; i < availablePoints.Count; i++)
-                Gizmos.DrawWireSphere(availablePoints[i].transform.position, col.radius);
-        }
-    }
-
     /// <summary>
     /// Moves the AI to the given position
     /// </summary>
@@ -179,18 +172,19 @@ public class AIManager : MonoBehaviour
     private void MoveToPosition(Vector2 pos)
     {
         if (transform.position.x < pos.x + 0.02f && transform.position.x > pos.x - 0.02f)
-        {
             moveManager.MoveCharacter(0);       //Stay right there!
-            isMoving = false;
-        }
         else if (pos.x > transform.position.x)
             moveManager.MoveCharacter(1);
         else if (pos.x < transform.position.x)
             moveManager.MoveCharacter(-1);
     }
 
+
     private void Update()
     {
+        if (currentAIType == AIType.DoNothing)
+            return; //Don Nothing!
+
         switch (currentState)
         {
             case States.MoveRight:
@@ -203,12 +197,16 @@ public class AIManager : MonoBehaviour
                 shootManager.ShootBullet(-1, false);
                 break;
             case States.GoToSafety:
-                isMoving = true;
                 MoveToPosition(LookForNextSafeZone());
                 break;
             default:
                 break;
         }
+    }
+
+    private void RunDoNothing()
+    {
+        Debug.Log("Doing Nothing");
     }
 
     private void RunRandom()
@@ -228,7 +226,7 @@ public class AIManager : MonoBehaviour
     {
         Debug.Log("Running Greedy Decision...");
         //Get All the possible Actions
-        int statesCount = Enum.GetNames(typeof(States)).Length;
+        //int statesCount = Enum.GetNames(typeof(States)).Length;
         //Always do the action that you think is best!
         int chance = UnityEngine.Random.Range(0,2);
         if (chance == 0)
@@ -247,4 +245,16 @@ public class AIManager : MonoBehaviour
     }
 
     #endregion
+
+    #region Debug
+    private void OnDrawGizmos()
+    {
+        if (availablePoints != null && availablePoints.Count > 0)
+        {
+            for (int i = 0; i < availablePoints.Count; i++)
+                Gizmos.DrawWireSphere(availablePoints[i].transform.position, col.radius);
+        }
+    }
+    #endregion
+
 }
